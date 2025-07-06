@@ -42,8 +42,8 @@ public class GameController {
         try {
             Connection conn = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/quizdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC",
-                    "Atif",
-                    "arpita"
+                    "Ratul",
+                    "1234"
             );
 
             Statement stmt = conn.createStatement();
@@ -56,7 +56,7 @@ public class GameController {
                         rs.getString("option2"),
                         rs.getString("option3"),
                         rs.getString("option4"),
-                        rs.getString("correct_option") // This is 1, 2, 3 or 4
+                        rs.getString("correct_option") 
                 );
                 questions.add(q);
             }
@@ -89,7 +89,7 @@ public class GameController {
         if (selected != null) {
             String selectedText = selected.getText();
 
-            // Correct option from DB is 1/2/3/4
+            
             Question currentQuestion = questions.get(currentIndex);
             int correctOption = Integer.parseInt(currentQuestion.getAnswer());
 
@@ -138,8 +138,8 @@ public class GameController {
 
     private void saveOrUpdatePlayerScore(String playerName, int score) {
         String url = "jdbc:mysql://localhost:3306/quizdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
-        String user = "Atif";
-        String password = "arpita";
+        String user = "Ratul";
+        String password = "1234";
 
         try (Connection conn = DriverManager.getConnection(url, user, password)) {
             String selectSQL = "SELECT score FROM players WHERE name = ?";
